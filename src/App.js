@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom"
 import BodySelection from "./scenes/BodySelection";
 import Others from "./scenes/Others";
-import Home from "./scenes/Home";
 import Result from "./scenes/Result";
 import { useState, useEffect } from 'react';
 import General from "./scenes/General";
@@ -16,6 +15,7 @@ import { useSelector } from "react-redux";
 import History from "./scenes/History";
 import Dashboard from "./scenes/Dashboard";
 import Profile from "./scenes/Profile"
+import Landing from "./scenes/Landing";
 
 function App() {
   const user = useSelector((state) => state.global.user)
@@ -49,7 +49,7 @@ function App() {
         <BrowserRouter>
 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
 
