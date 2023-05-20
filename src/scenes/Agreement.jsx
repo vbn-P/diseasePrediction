@@ -28,7 +28,8 @@ function Agreement() {
                     <Space h="md" />
 
                     <List  withPadding>
-                        <List.Item>This checkup is not a diagnosis.</List.Item>
+                        <List.Item>This checkup is based on th symptoms <br />
+                        you provides</List.Item>
                         <Space h="md" />
                         <List.Item>This checkup is for informational purposes <br /> and is not a qualified medical opinion.</List.Item>
                         <Space h="md" />
@@ -40,7 +41,7 @@ function Agreement() {
                     <Space h="xl" />
 
                     <Checkbox
-                        label="I agree to sell my privacy" onChange={()=>{
+                        label="I agree to the terms and conditions" onChange={()=>{
                             setCheckValue(!checkValue)
                         }}
                     />

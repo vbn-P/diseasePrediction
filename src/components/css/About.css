@@ -1,0 +1,24 @@
+.abtxt{
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    width: 900px;
+    
+}
+.card{
+    width:200px;
+    height: 250px;
+   
+}
+.cardsgroup{
+
+    padding: 50px 0px;
+
+}
+.cardtext{
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+.title{
+    margin-top: 30px;
+}

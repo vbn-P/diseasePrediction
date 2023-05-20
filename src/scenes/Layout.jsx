@@ -7,14 +7,20 @@ import { Outlet } from "react-router-dom";
 
 function Layout({setSelSymptoms}) {
 
+    const customStyles = {
+        backgroundColor: '#ccd0d9',
+        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
+        borderBottom: '0rem solid black',
+
+      };
 
 
     return (
         <AppShell
             padding="xl"
-            header={<Header height={70} p="xs"> <TopNavbar setSelSymptoms={setSelSymptoms} /> </Header>}
+            header={<Header height={70} p="xs" style={customStyles}> <TopNavbar setSelSymptoms={setSelSymptoms} /> </Header>}
             styles={(theme) => ({
-                main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+                main: { backgroundColor: '#e4e6eb' },
             })}
         >
         <Outlet/>

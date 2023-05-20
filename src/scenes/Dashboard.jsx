@@ -49,7 +49,7 @@ function Dashboard({setSelSymptoms}) {
                 <Grid.Col md={19}>
                     <Grid>
                         <Grid.Col md={8}>
-                            <Paper shadow="xs" p="md" mih="10rem">
+                            <Paper shadow="sm" p="md" mih="10rem">
                                 <Stack align="flex-start" mt="lg">
                                     <Title>Hi {userData.payload.firstName}</Title>
                                     <Text>Welcome to Dashboard</Text>
@@ -59,7 +59,7 @@ function Dashboard({setSelSymptoms}) {
 
                         </Grid.Col>
                         <Grid.Col md={4}>
-                        <Paper shadow="xs" p="md" mih="10rem">
+                        <Paper shadow="sm" p="md" mih="10rem">
                             <Stack align="center" justify="center" mt="lg">
                                 <Title order={4}>Make another prediction</Title>
                                 <Button onClick={()=>{

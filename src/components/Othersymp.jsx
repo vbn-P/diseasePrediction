@@ -4,7 +4,7 @@ import { Paper,Title,Space,ScrollArea,Checkbox } from '@mantine/core';
 
 function Othersymp({body,setBody,selSymptoms,setSelSymptoms}) {
 
-    const otherSymptoms = ["itching","skin_rash","nodal_skin_eruptions","shivering","chills","joint_pain","muscle_wasting","fatigue","weight_gain","anxiety","mood_swings","weight_loss","restlessness","lethargy","irregular_sugar_level","cough","high_fever","sweating","dehydration","yellowish_skin","nausea","mild_fever","dizziness","cramps","obesity","extra_marital_contacts","swelling_joints","movement_stiffness","spinning_movements","loss_of_balance","unsteadiness","weakness_of_one_body_side","internal_itching","toxic_look_typhos","depression","irritability","muscle_pain","red_spots_over_body","family_history","lack_of_concentration","receiving_blood_transfusion","receiving_unsterile_injections","history_of_alcohol_consumption","fluid_over","scurring","skin_peeling"]
+    const otherSymptoms = ["anxiety","chills","cough","cramps","dehydration","depression","dizziness","extra_marital_contacts","family_history","fatigue","fluid_over","high_fever","history_of_alcohol_consumption","internal_itching","irregular_sugar_level","irritability","itching","joint_pain","lack_of_concentration","lethargy","loss_of_balance","mild_fever","mood_swings","movement_stiffness","muscle_pain","muscle_wasting","nausea","nodal_skin_eruptions","obesity","receiving_blood_transfusion","receiving_unsterile_injections","red_spots_over_body","restlessness","scurring","shivering","skin_peeling","skin_rash","spinning_movements","sweating","swelling_joints","toxic_look_typhos","unsteadiness","weakness_of_one_body_side","weight_gain","weight_loss","yellowish_skin"]
 
     function handlechange(event) {
         const val = event.target.value
