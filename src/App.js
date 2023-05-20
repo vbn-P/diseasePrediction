@@ -14,8 +14,8 @@ import * as tf from '@tensorflow/tfjs';
 import { useSelector } from "react-redux";
 import History from "./scenes/History";
 import Dashboard from "./scenes/Dashboard";
-import Landing from "./scenes/Landing";
 import Profile from "./scenes/Profile"
+import Landing from "./scenes/Landing";
 
 function App() {
   const user = useSelector((state) => state.global.user)
