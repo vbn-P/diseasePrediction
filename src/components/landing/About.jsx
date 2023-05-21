@@ -19,7 +19,7 @@ function About() {
             <Divider size="xl" color=' #339AF0'/>
           </Title>
           </Flex>
-          <Group spacing="sm">
+          <Group spacing="sm"  position="center">
           <Image width={400} height={400} fit="contain" src="/images/about.png" />
           <Text className='abtxt' align='justify'>
           Welcome to MED.ai, the innovative web application that leverages the power of machine learning to predict diseases based on symptoms. With MED.ai, you can now gain valuable insights and early detection, revolutionizing the way healthcare is approached. Using advanced machine learning algorithms trained on extensive medical data, including symptom profiles and disease outcomes, MED.ai accurately assesses the likelihood of various diseases based on reported symptoms. By analyzing this information, MED.ai empowers individuals and healthcare professionals alike to make informed decisions and take proactive measures for better health outcomes.
