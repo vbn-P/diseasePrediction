@@ -25,7 +25,7 @@ function Team() {
                         </Card.Section>
                     </Center>
                     <Text size="md" color="Black" weight={700} align='center' className='cardtext2' >
-                        Rohith N Nair
+                        N Rohith Nair
                     </Text>
                     <Text size="xs" color="Black" weight={700} align='center'>
                         S8-CSE B
