@@ -1,7 +1,7 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom"
-import { Paper, Box, Flex, Title, Space, Text, CloseButton,Button,ScrollArea } from '@mantine/core';
-function SelectedSymptoms({ selSymptoms, setSelSymptoms,height,title }) {
+import { useNavigate } from "react-router-dom"
+import { Paper, Box, Flex, Title, Space, Text, CloseButton, Button, ScrollArea, Group, Grid } from '@mantine/core';
+function SelectedSymptoms({ selSymptoms, setSelSymptoms, height, title }) {
 
     const navigate = useNavigate()
     const symptoms = selSymptoms
@@ -30,55 +30,72 @@ function SelectedSymptoms({ selSymptoms, setSelSymptoms,height,title }) {
         )
     }
 
-    var scrollHeight= `${height-14}vh`
-    var pheight =`${height-30}vh`
+    var scrollHeight = `${height - 14}vh`
+    var pheight = `${height - 30}vh`
 
 
 
-    function handleClear(){
+    function handleClear() {
         setSelSymptoms([])
     }
 
-    function handleSubmit(){
+    function handleSubmit() {
         if (title === "Proceed") {
             navigate("/predict/other")
-        }else{
+        }
+        else {
             navigate("/predict/result")
         }
     }
 
+
+
+
     return (
-        <Paper  shadow="md" mih={pheight} radius="md" p="md">
+        <Paper shadow="md" mih={pheight} radius="md" p="md">
             <Title order={3}>SELECTED SYMPTOMS</Title>
             <Space h="md" />
             <ScrollArea h={scrollHeight}>
-            {
-                symptoms.map((value) => {
-                    return (
-                        <SelectSym value={value} />
-                        
+                {
+                    symptoms.map((value) => {
+                        return (
+                            <SelectSym value={value} />
+
                         )
                     })
                 }
-                
-            </ScrollArea>    
-                <Flex
-                    mih={50}
-                    gap="md"
-                    justify="flex-end"
-                    align="center"
-                    direction="row"
-                    wrap="wrap"
-                    
-                >
-                    <Button onClick={()=>{
-                        handleClear()
-                    }}>Clear</Button>
-                    <Button disabled={selSymptoms == '' ? true : false } onClick={()=>{
-                        handleSubmit()
-                    }}>{title}</Button>
-                </Flex>
-            
+
+            </ScrollArea>
+            <Grid>
+                <Grid.Col span={4}>
+                    <Flex mih={50} gap="md" justify="flex-start" align="center" direction="row" wrap="wrap" >
+
+                        {!(selSymptoms.length > 2) && (
+                            <Text className='text' fw={400} color='red'>Select atleast 4 symptoms !</Text>
+                        )}
+                    </Flex>
+                </Grid.Col>
+
+                <Grid.Col span={8}>
+                    <Flex mih={50} gap="md" justify="flex-end" align="center" direction="row" wrap="wrap" >
+
+
+                        {!(title === 'Proceed' && selSymptoms.length < 3) && (
+                            <Button onClick={() => { navigate('/predict/body'); }}>
+                                {'Back'}
+                            </Button>
+                        )}
+                        <Button onClick={() => {
+                            handleClear()
+                        }}>Clear</Button>
+                        <Button disabled={title === 'Predict' && selSymptoms.length < 3} onClick={() => {
+                            handleSubmit()
+                        }} >{title}</Button>
+
+                    </Flex>
+                </Grid.Col>
+            </Grid>
+
         </Paper>
     )
 }
