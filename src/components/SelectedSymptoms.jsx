@@ -71,7 +71,7 @@ function SelectedSymptoms({ selSymptoms, setSelSymptoms, height, title }) {
                     <Flex mih={50} gap="md" justify="flex-start" align="center" direction="row" wrap="wrap" >
 
                         {!(selSymptoms.length > 2) && (
-                            <Text className='text' fw={400} color='red'>Select atleast 4 symptoms !</Text>
+                            <Text className='text' fw={400} color='red'>Select at least 3 symptoms !</Text>
                         )}
                     </Flex>
                 </Grid.Col>
