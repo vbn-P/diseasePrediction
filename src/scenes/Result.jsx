@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { Paper, Stack, Title, Text, Group, Divider, Space, Button  } from '@mantine/core';
 import { useNavigate } from "react-router-dom"
 
-
 function Result({ selSymptoms, model, setSelSymptoms }) {
   const navigate = useNavigate()
   const [disease, setDisease] = useState("");
@@ -236,7 +235,6 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
   [40, "Hepatitis A is a viral infection that affects the liver. It is caused by the Hepatitis A virus (HAV) and is spread through contaminated food or water, or close contact with an infected person. The symptoms of Hepatitis A can include fatigue, nausea, vomiting, abdominal pain, dark urine, and jaundice."]
   ]);
 
-  
 
   const symptomsFinal =[
     'itching',
@@ -370,8 +368,7 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
     'inflammatory_nails',
     'blister',
     'red_sore_around_nose',
-    'yellow_crust_ooze'];
-  var percentage =0
+    'yellow_crust_ooze'];  var percentage =0
   async function predict() {
     selSymptoms.forEach(element => {
       allSymptoms[element] = "1"
@@ -385,7 +382,6 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
         inputData.push(parseInt(allSymptoms[i]));
       }
     }
-    
     const reshapedTensor = tf.tensor(inputData, [1, 132]);
 
     const output = model.predict(reshapedTensor);
@@ -402,7 +398,11 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
 
        percentage = (maxProbability * 100).toFixed(2);
       console.log(`Class ${maxIndex}: ${percentage}%`);
+      console.log(userData)
+      console.log(user)
       setPercent(percentage)
+      console.log("setsetset")
+      console.log(percentage)
     });
 
     const label = tf.argMax(output, 1).dataSync()[0];
@@ -411,7 +411,9 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
 
     setDisease(diseaseName);
     setDetail(detailMap.get(label))
-    if (user !== "guest" && percent > 80) {
+    console.log(percent)
+    if (user !== "guest" && percentage > 80) {
+      console.log("hiiiiiii")
       const docRef = await addDoc(collection(db, user), {
         symptoms: selSymptoms,
         disease: diseaseName,
@@ -421,7 +423,6 @@ function Result({ selSymptoms, model, setSelSymptoms }) {
 
   }
 
-  console.log(disease)
 
 
   useEffect(() => {

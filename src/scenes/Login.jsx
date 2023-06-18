@@ -24,7 +24,11 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const dispatch = useDispatch();
     const [err, setErr] = useState(false);
-
+    function setTime(date){
+        const dateObject = new Date(date.seconds * 1000);
+        const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
+        return formattedDate
+    }   
     
     const nameSetter = (event) => {
         setUsername(event.target.value)
@@ -43,8 +47,17 @@ export default function Login() {
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.data().age !== "") {
-
-                    dispatch(setUserData(docSnap.data()))
+                    const docdata = {
+                        age :  docSnap.data().age,
+                        email: docSnap.data().email,
+                        firstName: docSnap.data().firstName,
+                        lastName: docSnap.data().lastName,
+                        weight: docSnap.data().weight,
+                        height: docSnap.data().height,
+                        gender: docSnap.data().gender,
+                        timestamp: setTime(docSnap.data().timestamp)
+                    }
+                    dispatch(setUserData(docdata))
                     navigate("/predict/dashboard")
                 } else {
                     navigate("/predict/agreement")
@@ -52,7 +65,7 @@ export default function Login() {
             })
             .catch((error) => {
 
-
+                console.log(error)
                 if(error.code === "auth/invalid-email"){
                     setErr("Invalid Email!!!")
 

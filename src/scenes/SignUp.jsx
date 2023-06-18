@@ -36,6 +36,10 @@ const SignUp = () => {
   const [agreement, setAgreement] = useState(false);
   const [err, setErr] = useState(false);
 
+
+  
+
+
   const firstSetter = (event) => {
     setFirstName(event.target.value);
   };

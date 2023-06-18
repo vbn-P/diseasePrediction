@@ -19,6 +19,11 @@ function General() {
     const [checkValue, setCheckValue] = useState(false)
     const user = useSelector((state) => state.global.user)
     const dispatch = useDispatch();
+    function setTime(date){
+        const dateObject = new Date(date.seconds * 1000);
+        const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
+        return formattedDate
+    }   
 
     useEffect(() => {
         if (age !== "0" && gender !== "" && height !== "0" && weight !== "0") {
@@ -38,7 +43,18 @@ function General() {
         }, { merge: true }).then(async(docRef) => {
             const docRefs = doc(db, "users", user.payload);
             const docSnap = await getDoc(docRefs);
-            dispatch(setUserData(docSnap.data()))
+            const docdata = {
+                age :  docSnap.data().age,
+                email: docSnap.data().email,
+                firstName: docSnap.data().firstName,
+                lastName: docSnap.data().lastName,
+                weight: docSnap.data().weight,
+                height: docSnap.data().height,
+                gender: docSnap.data().gender,
+                timestamp: setTime(docSnap.data().timestamp)
+            }
+            console.log(docdata)
+            dispatch(setUserData(docdata))
             if (user.payload === "guest") {
                 navigate("/predict/body")
 

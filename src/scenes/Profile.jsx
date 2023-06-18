@@ -19,6 +19,11 @@ function Profile() {
   const [weight, setWeight] = useState(userData.payload.weight);
   const [gender, setGender] = useState(userData.payload.gender);
   const dispatch = useDispatch();
+  function setTime(date){
+    const dateObject = new Date(date.seconds * 1000);
+    const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
+    return formattedDate
+}   
 
   const handler = () => {
     const dataRef = doc(db, 'users', user.payload);
@@ -34,7 +39,18 @@ function Profile() {
       .then(async (docRef) => {
         const docRefs = doc(db, "users", user.payload);
         const docSnap = await getDoc(docRefs);
-        dispatch(setUserData(docSnap.data()));
+        const docdata = {
+          age :  docSnap.data().age,
+          email: docSnap.data().email,
+          firstName: docSnap.data().firstName,
+          lastName: docSnap.data().lastName,
+          weight: docSnap.data().weight,
+          height: docSnap.data().height,
+          gender: docSnap.data().gender,
+          timestamp: setTime(docSnap.data().timestamp)
+      }
+      dispatch(setUserData(docdata))
+        
       })
       .catch((error) => {
         console.log(error);
