@@ -20,9 +20,11 @@ function General() {
     const user = useSelector((state) => state.global.user)
     const dispatch = useDispatch();
     function setTime(date){
-        const dateObject = new Date(date.seconds * 1000);
-        const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
-        return formattedDate
+       if (date && date.seconds) {
+            const dateObject = new Date(date.seconds * 1000);
+            const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
+            return formattedDate;
+          }
     }   
 
     useEffect(() => {
